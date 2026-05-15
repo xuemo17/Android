@@ -139,7 +139,7 @@ APK 文件生成在 `app/build/outputs/apk/debug/app-debug.apk`。
 4. 建立 README。
 5.修复并完善README
 
-7.## 作者信息
+7.**作者信息**
 姓名：黄浩忠
 班级：23数字媒体技术01
 学号：23120031033

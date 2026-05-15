@@ -1,185 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@android:color/darker_gray">
+    android:background="@color/background">
 
-    <LinearLayout
+    <!-- 顶部应用栏 -->
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/primary"
+        app:elevation="0dp">
 
-        <!-- 总消费金额区域 -->
-        <LinearLayout
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@android:color/white"
-            android:padding="24dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginTop="16dp"
-            android:gravity="center">
+            android:layout_height="56dp"
+            android:paddingHorizontal="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="总消费金额"
-                android:textSize="18sp"
-                android:textColor="@android:color/darker_gray"
-                android:layout_marginBottom="12dp" />
+                android:text="我的账本"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/total_amount_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="¥0.00"
-                android:textSize="42sp"
-                android:textColor="@android:color/holo_blue_dark"
-                android:fontFamily="sans-serif-medium" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
 
-        </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!-- 添加消费区域 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@android:color/white"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp">
+            android:padding="16dp">
 
-            <EditText
-                android:id="@+id/amount_edit_text"
+            <!-- 总消费金额卡片 -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="金额"
-                android:inputType="numberDecimal"
-                android:layout_marginBottom="12dp"
-                android:padding="12dp" />
-
-            <Spinner
-                android:id="@+id/category_spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_total_card"
+                android:padding="24dp"
                 android:layout_marginBottom="16dp"
-                android:padding="12dp" />
+                android:gravity="center">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="本月总支出"
+                    android:textSize="14sp"
+                    android:textColor="#B3FFFFFF"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/total_amount_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="¥0.00"
+                    android:textSize="40sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium" />
+
+                <View
+                    android:layout_width="40dp"
+                    android:layout_height="3dp"
+                    android:background="#4DFFFFFF"
+                    android:layout_marginTop="12dp" />
+
+            </LinearLayout>
+
+            <!-- 添加消费卡片 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card_white"
+                android:padding="20dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="记一笔"
+                    android:textSize="16sp"
+                    android:textColor="@color/on_surface"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp" />
+
+                <EditText
+                    android:id="@+id/amount_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:hint="输入金额"
+                    android:inputType="numberDecimal"
+                    android:layout_marginBottom="12dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/bg_input"
+                    android:textSize="16sp"
+                    android:textColor="@color/on_surface"
+                    android:textColorHint="@color/on_surface_variant" />
+
+                <Spinner
+                    android:id="@+id/category_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="16dp"
+                    android:paddingHorizontal="12dp"
+                    android:background="@drawable/bg_input" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/add_button"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="添加消费"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_button_primary"
+                        android:layout_marginEnd="8dp"
+                        android:stateListAnimator="@null" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/query_button"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="查询记录"
+                        android:textColor="@color/primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_button_outline"
+                        android:layout_marginStart="8dp"
+                        android:stateListAnimator="@null" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 工具卡片 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card_white"
+                android:padding="20dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="工具箱"
+                    android:textSize="16sp"
+                    android:textColor="@color/on_surface"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/send_notification_button"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="记账提醒"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_button_accent"
+                        android:layout_marginEnd="8dp"
+                        android:stateListAnimator="@null" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/background_service_button"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:text="启动后台服务"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:background="@drawable/bg_button_secondary"
+                        android:layout_marginStart="8dp"
+                        android:stateListAnimator="@null" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/service_status_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="后台任务未启动"
+                    android:textSize="13sp"
+                    android:textColor="@color/on_surface_variant"
+                    android:layout_marginTop="12dp" />
+
+            </LinearLayout>
+
+            <!-- 消费记录标题 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
 
-                <Button
-                    android:id="@+id/add_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="添加消费"
-                    android:backgroundTint="@android:color/holo_blue_light"
-                    android:textColor="@android:color/white"
-                    android:layout_marginEnd="8dp"
-                    android:padding="12dp" />
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="20dp"
+                    android:background="@color/primary"
+                    android:layout_marginEnd="8dp" />
 
-                <Button
-                    android:id="@+id/query_button"
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="查询记录"
-                    android:backgroundTint="@android:color/holo_green_light"
-                    android:textColor="@android:color/white"
-                    android:layout_marginStart="8dp"
-                    android:padding="12dp" />
+                    android:text="近期消费"
+                    android:textSize="18sp"
+                    android:textColor="@color/on_surface"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
-        </LinearLayout>
-
-        <!-- 后台操作区域 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@android:color/white"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <Button
-                    android:id="@+id/send_notification_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="记账提醒"
-                    android:backgroundTint="@android:color/holo_red_dark"
-                    android:textColor="@android:color/white"
-                    android:layout_marginEnd="8dp"
-                    android:padding="12dp" />
-
-                <Button
-                    android:id="@+id/background_service_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="启动后台服务"
-                    android:backgroundTint="@android:color/holo_purple"
-                    android:textColor="@android:color/white"
-                    android:layout_marginStart="8dp"
-                    android:padding="12dp" />
-
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/service_status_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="后台任务未启动"
-                android:textSize="14sp"
-                android:textColor="@android:color/darker_gray"
-                android:layout_marginTop="12dp" />
-
-        </LinearLayout>
-
-        <!-- 消费记录列表标题 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="12dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="消费记录"
-                android:textSize="18sp"
-                android:textColor="@android:color/white"
-                android:fontFamily="sans-serif-medium" />
-
-        </LinearLayout>
-
-        <!-- 消费记录列表 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:background="@android:color/white"
-            android:layout_marginBottom="16dp">
-
+            <!-- 消费记录列表 -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/record_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-</ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

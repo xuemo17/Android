@@ -32,9 +32,9 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordView
         RecordItem item = recordList.get(position);
         
         // 绑定数据到视图
-        holder.idTextView.setText(String.valueOf(item.getId()));
+        holder.idTextView.setText("#" + item.getId());
         holder.nameTextView.setText(item.getName());
-        holder.amountTextView.setText(String.format("¥%.2f", item.getAmount()));
+        holder.amountTextView.setText(String.format("-¥%.2f", item.getAmount()));
     }
 
     @Override

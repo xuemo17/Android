@@ -3,32 +3,61 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:background="@drawable/bg_record_item"
     android:padding="16dp"
-    android:background="@android:color/white"
-    android:layout_marginBottom="8dp">
+    android:layout_marginBottom="10dp"
+    android:gravity="center_vertical">
 
-    <TextView
-        android:id="@+id/id_text_view"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="@android:color/darker_gray" />
+    <!-- 左侧图标 -->
+    <FrameLayout
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background="@drawable/ic_circle_primary"
+        android:layout_marginEnd="14dp">
 
-    <TextView
-        android:id="@+id/name_text_view"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¥"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
+    <!-- 中间内容 -->
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
-        android:fontFamily="sans-serif-medium" />
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/on_surface"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/id_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/on_surface_variant"
+            android:layout_marginTop="2dp" />
+
+    </LinearLayout>
+
+    <!-- 右侧金额 -->
     <TextView
         android:id="@+id/amount_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textColor="@android:color/holo_red_dark"
-        android:fontFamily="sans-serif-medium" />
+        android:textSize="17sp"
+        android:textColor="@color/expense"
+        android:textStyle="bold" />
 
 </LinearLayout>

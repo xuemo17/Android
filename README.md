@@ -130,3 +130,16 @@ MyApplication/
 ./gradlew assembleDebug
 ```
 APK 文件生成在 `app/build/outputs/apk/debug/app-debug.apk`。
+
+6.**开发过程**
+本项目使用 Git 进行版本管理，主要提交记录包括：
+1. 提交GitHub项目；
+2. 优化按钮与列表的ui；
+3. 实现app的整体背景优化；
+4. 建立 README。
+5.修复并完善README
+
+7.## 作者信息
+姓名：黄浩忠
+班级：23数字媒体技术01
+学号：23120031033
